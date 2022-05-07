@@ -1,0 +1,17 @@
+.from-div{
+    width: 70%;
+    background-color: #f2f2f2;
+    padding: 15px;
+    margin: 30px auto auto 30px; 
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+.form-label{
+    font-size: 16px;
+}
+.form-control{
+    font-size: 18px;
+}
+.form-select{
+    font-size: 18px;
+}

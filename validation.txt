@@ -1,0 +1,49 @@
+ Frontend  Validation 
+
+Personal details
+
+    name: {60 character}
+
+    D.O.B{
+    day: dropdowm 1 to 31, date will show according to month
+    month: dropdowm 1 to 12, month will show according to date
+    year:dropdowm 1990  to current year
+    }
+
+    email: {
+      email format validation
+    }
+
+    phone number {
+        only number allowed
+        10 character limit
+        greater than 6000000000 and less than 999999999
+    }
+
+    addhar number {
+        only number allowed
+        12 character limit
+    }
+
+    pincode {
+        only number allowed
+        6 character limit
+    }
+
+    roll number {
+        only number allowed 
+        6 character limit
+        > 100000 unvalid 
+    }
+    marks number {
+        only number allowed 
+        3 character limit
+        >  1 unvalid 
+    }
+
+    passing year {
+        dropdowm menu
+        2010 to current year
+    }
+
+
