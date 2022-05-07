@@ -21,7 +21,7 @@ app.post("/", (req,res) => {
     const formData = {
         name : req.body.fname
     }
-    console.log(formData.name);
+    console.log(formData);
     res.end();
 });
 
