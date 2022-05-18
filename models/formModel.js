@@ -16,6 +16,7 @@ const studentData = mongoose.Schema({
     state: {type:String},
     pincode: {type:String},
 });
+
  const Student = mongoose.model('Student', studentData, 'students');
 
  module.exports = Student;
