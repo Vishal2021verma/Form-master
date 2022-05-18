@@ -3,6 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const submitData = require('./routesHandlers/submit');
+const { Template } = require('ejs');
+const Student = require('./models/formModel');
+const loginAuth = require('./routesHandlers/login');
 
 
 // database connection
@@ -12,6 +15,7 @@ mongoose.connect('mongodb://localhost:27017/formsDB',{
 });
 
 const app = express();
+app.set("view engine", "ejs");
 
 //body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,18 +24,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/htmlFile/from.html");
 });
-app.get("*", (req, res) => {
-    res.sendFile(__dirname + "/htmlFile/from.html");
-});
+// app.get("*", (req, res) => {
+//     res.sendFile(__dirname + "/htmlFile/from.html");
+// });
 app.get("/login", (req,res) => {
-    res.sendFile(__dirname + "/htmlFile/login");
-});
-app.get('/studentList' ,(req, res) => {
-    res.sendFile(__dirname + "/htmlFile/StudentList.html");
+    res.sendFile(__dirname + "/htmlFile/login.html");
 });
 
+
 // Post routes
-app.post("/submit", submitData);
+app.post("/submit", submitData.SUBMIT_DATA);
 app.post("/loginAuth", loginAuth);
 
 //Port listen 8080
