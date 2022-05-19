@@ -24,11 +24,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/htmlFile/from.html");
 });
-// app.get("*", (req, res) => {
-//     res.sendFile(__dirname + "/htmlFile/from.html");
-// });
+
 app.get("/login", (req,res) => {
     res.sendFile(__dirname + "/htmlFile/login.html");
+});
+app.get("/*", (req, res) => {
+    res.status(404).sendFile(__dirname + "/htmlFile/four.html");
 });
 
 

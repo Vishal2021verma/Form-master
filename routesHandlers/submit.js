@@ -1,3 +1,4 @@
+const express = require('express');
 const mongoose = require('mongoose');
 const Student = require('../models/formModel');
 exports.SUBMIT_DATA = (req, res) => {
@@ -19,7 +20,7 @@ exports.SUBMIT_DATA = (req, res) => {
             pincode: req.body.pincode
         }
     );
-    student.save().then(() => {res.status(201).sendFile(__dirname + "./htmlFile/thankyou.html")}).catch((error)=> {
+    student.save().then(() => {res.sendFile(__dirname + "/thankyou.html")}).catch((error)=> {
         res.status(500).json({
             message: "Something went wrong when adding to MongoDB",
             error,
