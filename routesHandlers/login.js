@@ -18,7 +18,6 @@ var loginAuth = function (req, res) {
                         console.log(foundUser.email + " Logged In");
                         
                         Student.find({}, (err, foundItem) =>{
-                            console.log(foundItem);
                             res.render("list", { newItems: foundItem });
                         });
 
