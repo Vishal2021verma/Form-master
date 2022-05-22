@@ -15,15 +15,16 @@
       background-color: rgb(236, 236, 236);
 
     }
-     
-    .container{
-      width:100%;
+
+    .container {
+      width: 100%;
 
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
     }
+
     .from-div {
       width: 80%;
       background-color: white;
@@ -84,19 +85,25 @@
       </div>
     </div>
   </nav>
-  
+
   <div class="container">
     <h1 style="margin: 30px auto 30px auto ">Admission Form</h1>
     <div class="from-div">
       <h3>Personal Details</h3>
       <br>
-      
+
 
       <form action="/submit" method="post" class="row g-4 needs-validation">
         <div class="col-md-6">
           <label for="fname" class="form-label">Name</label>
-          <input type="text" class="form-control" id="fname" name="fname" onkeypress="/[0-9a-zA-Z]/i.test(event.key)"
-            onchange="namevaidate('fname','fname-invalid');" maxlength="60" required />
+          <input 
+          type="text" 
+          class="form-control" 
+          id="fname" name="fname" 
+          onkeypress="return /[0-9a-zA-Z]/i.test(event.key)"
+          onchange="namevaidate('fname','fname-invalid');" 
+          maxlength="60" 
+          required />
           <div id="fname-invalid" class="invalid"></div>
         </div>
 
@@ -129,8 +136,15 @@
         </div>
         <div class="col-md-3">
           <label for="pNumber" class="form-label">Phone number</label>
-          <input type="text" maxlength="10" onkeypress="/[0-9]/i.test(event.key)"
-            onchange="numberField('pNumber',10,'pnumber-invalid')" class="form-control" id="pNumber" name="pNumber" />
+          <input 
+          type="text"
+          maxlength="10" 
+          onkeypress="return /[0-9]/i.test(event.key)"
+          onchange="numberField('pNumber',10,'pnumber-invalid')"
+          class="form-control"
+          id="pNumber"
+          name="pNumber" 
+          />
           <div id="pnumber-invalid" class="invalid"></div>
         </div>
         <div class="col-md-3">
@@ -188,7 +202,37 @@
     </div>
   </div>
 
-  <script src="./validate.js"></script>
+  <script>
+    function setErr(id, er) {
+      var elemet = document.getElementById(id);
+      elemet.innerText = er;
+    }
+    //this function check length of the names field onchange event
+    function namevaidate(id, invalidId) {
+      var nameInput = document.getElementById(id);
+      var nameInputData = nameInput.value;
+      if (nameInput.value.length < 3) {
+        setErr(invalidId, "!Length of name is too short");
+      } else if (nameInputData.length > 60) {
+        setErr(invalidId, "!Length of name is too long");
+      } else {
+        setErr(invalidId, "");
+      }
+    }
+    // this function check the min length length of the numbers field
+    function numberField(id, maxlength, invalidId) {
+      var numberInput = document.getElementById(id);
+      var numberInputData = numberInput.value;
+      if (numberInputData.length < maxlength) {
+        setErr(invalidId, "Incorrect Pincode");
+      }
+      else {
+        setErr(invalidId, '');
+      }
+
+    }
+
+  </script>
 </body>
 
 </html>
